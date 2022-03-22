@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CustomHeads:jar">
+    <output-path>$USER_HOME$/Desktop/(1.18) server for plugin testing/plugins</output-path>
+    <root id="archive" name="CustomHeads.jar">
+      <element id="module-output" name="CustomHeads" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/plugin.yml" />
+    </root>
+  </artifact>
+</component>
