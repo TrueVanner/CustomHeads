@@ -33,11 +33,12 @@ public class Head {
 
         ItemStack item = new ItemStack(Material.PLAYER_HEAD, 1, (short) 3);
         SkullMeta meta = (SkullMeta) item.getItemMeta();
+
         meta.setCustomModelData(123);
         meta.setDisplayName(name);
         if (!texture.equals("")) {
             GameProfile profile = new GameProfile(UUID.fromString("c090b961-3f9b-47de-a1a7-d4fc0fa6bacc"), null);
-            profile.getProperties().put("textures", new Property("textures", texture));
+            profile.getProperties().put("textures", new Property("textures", texture, ""));
 
             Field profileField = null;
             try {

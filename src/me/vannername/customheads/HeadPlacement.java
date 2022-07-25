@@ -63,7 +63,7 @@ public class HeadPlacement implements Listener {
                     break;
                 }
             }
-            if (i >= placementLength(c)) return;
+            // if (i >= placementLength(c)) return;
 
             for (OfflinePlayer p : plugin.getServer().getOfflinePlayers()) {
                 if (c.getString("Placement." + i + ".name").equals(p.getName())) {

@@ -10,15 +10,6 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/(1.18) server for plugin testing/api/spigot-api-1.18.1-R0.1-SNAPSHOT.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
           <root url="jar://$MODULE_DIR$/some libraries/guava-31.0.1-jre.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -29,6 +20,15 @@
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/some libraries/authlib-3.2.38.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Desktop/(1.18) server for plugin testing/spigot-api-1.18.2-R0.1-SNAPSHOT.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
