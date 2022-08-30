@@ -46,11 +46,9 @@ public class HeadPlacement implements Listener {
 
     }
 
-    int i, cmd;
+    int i;
     Location l;
-    ItemStack head;
-    SkullMeta meta;
-    boolean player_head = false;
+    Head head;
 
     @EventHandler
     public void break_e(BlockBreakEvent e) {
@@ -63,33 +61,16 @@ public class HeadPlacement implements Listener {
                     break;
                 }
             }
-            // if (i >= placementLength(c)) return;
 
-            for (OfflinePlayer p : plugin.getServer().getOfflinePlayers()) {
-                if (c.getString("Placement." + i + ".name").equals(p.getName())) {
-                    player_head = true;
-                }
+            try {
+                head = new Head(c.getString("Placement." + i + ".name"), Head.getType(c.getInt("Placement." + i + ".cmd")));
+            } catch (IndexOutOfBoundsException e2) {
+                head = new Head("404: Head Not Found", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWZkMjQwMDAwMmFkOWZiYmJkMDA2Njk0MWViNWIxYTM4NGFiOWIwZTQ4YTE3OGVlOTZlNGQxMjlhNTIwODY1NCJ9fX0=", Head.HeadType.BASIC);
             }
-            if (player_head) {
-                head = new ItemStack(Material.PLAYER_HEAD, 1, (short) 3);
-                meta = (SkullMeta) head.getItemMeta();
-                meta.setOwner(c.getString("Placement." + i + ".name"));
-                meta.setDisplayName(c.getString("Placement." + i + ".name"));
-            } else {
-                try {
-                    head = new Head(Main.textures.get(Main.names.indexOf(c.getString("Placement." + i + ".name"))), c.getString("Placement." + i + ".name")).getItem();
-                    cmd = c.getInt("Placement." + i + ".cmd");
-                } catch (IndexOutOfBoundsException e2) {
-                    head = new Head("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWZkMjQwMDAwMmFkOWZiYmJkMDA2Njk0MWViNWIxYTM4NGFiOWIwZTQ4YTE3OGVlOTZlNGQxMjlhNTIwODY1NCJ9fX0=", "404: Head Not Found").getItem();
-                    cmd = 789;
-                }
-                meta = (SkullMeta) head.getItemMeta();
-            }
-            meta.setCustomModelData(cmd);
-            head.setItemMeta(meta);
+
             e.setDropItems(false);
             if (e.getPlayer().getGameMode() != GameMode.CREATIVE)
-                e.getBlock().getWorld().dropItem(e.getBlock().getLocation(), head);
+                e.getBlock().getWorld().dropItem(e.getBlock().getLocation(), head.getItem());
             c.set("Placement." + i + ".broken", true);
             plugin.saveConfig();
         }

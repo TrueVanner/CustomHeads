@@ -39,7 +39,7 @@ public class WanderingTraderHeads implements Listener {
 
             if(!stop) randomArr[i] = r;
 
-            //trust me, it works. Yes i've spent too much time on it. No, it is not the problem.
+            //trust me, it works. Yes I've spent too much time on it. No, it is not the problem.
         }
     }
 
@@ -56,26 +56,19 @@ public class WanderingTraderHeads implements Listener {
                     randomizeArr();
                     for (int i = 0; i < 4; i++) {
 
-                        ItemStack head = new Head(Main.textures.get(randomArr[i]), Main.names.get(randomArr[i])).getItem();
-                        ItemMeta meta = head.getItemMeta();
-                        meta.setCustomModelData(789);
-                        head.setItemMeta(meta);
+                        Head head = new Head(Main.names.get(randomArr[i]), Head.HeadType.FROM_SHOP);
 
-                        MerchantRecipe recipe = new MerchantRecipe(head, 2147483647);
-                        recipe.addIngredient(new ItemStack(Material.EMERALD, 1));
+                        MerchantRecipe recipe = new MerchantRecipe(head.getItem(), 2147483647);
+                        recipe.addIngredient(new ItemStack(Material.EMERALD, head.price()));
                         newlist.add(recipe);
                     }
                 }
                 else {
-                    for (int i = 0; i < Main.textures.size(); i++) {
-                        ItemStack head = new Head(Main.textures.get(i), Main.names.get(i)).getItem();
-                        ItemMeta meta = head.getItemMeta();
-                        meta.setCustomModelData(789);
-                        head.setItemMeta(meta);
+                    for (int i = 0; i < Main.names.size(); i++) {
+                        Head head = new Head(Main.names.get(i), Head.HeadType.FROM_SHOP);
 
-
-                        MerchantRecipe recipe = new MerchantRecipe(head, 2147483647);
-                        recipe.addIngredient(new ItemStack(Material.EMERALD, 1));
+                        MerchantRecipe recipe = new MerchantRecipe(head.getItem(), 2147483647);
+                        recipe.addIngredient(new ItemStack(Material.EMERALD, head.price()));
                         newlist.add(recipe);
                     }
                 }
